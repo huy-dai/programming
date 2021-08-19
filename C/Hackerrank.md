@@ -2,9 +2,9 @@
 
 ### Scanf:
 
-1.	`scanf("%c", &ch);` 
+1. `scanf("%c", &ch);`
     * scans in a single character to the char `ch`.
-2.	`scanf("%[^\n]%*c", s);`
+2. `scanf("%[^\n]%*c", s);`
     * [] is the scanset character, `^\n` stands for taking input as long as a newline isn’t encountered, `%*c` reads the newline character, where `*` indicates that the newline character is discarded
     * Note that this scan will NOT work as expected without first scanning in a newline character with `scanf(“\n”);` because the newline will be “leftover” from the previous line if you are scanning in multiple things.
 
@@ -126,3 +126,17 @@ Variadic functions are those which take in a variable number of arguments. They 
 `int printf(const char* format, ...);`
 
 In the problem I implemented a `sum`, `min`, and `max` functions which takes the first argument as the number of entries to operate on. A guide that I found very helpful to this problem is one from GeeksforGeeks: <https://www.geeksforgeeks.org/variadic-functions-in-c/>
+
+For example, the sum function would look like this:
+
+~~~c
+int  sum (int count,...) {
+    int tot = 0;
+    va_list ptr;
+    va_start(ptr, count);
+    for(int i=0; i < count; i++) {
+        tot += va_arg(ptr, int);
+    }
+    va_end(ptr);
+    return tot;
+~~~
