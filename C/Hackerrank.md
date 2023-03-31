@@ -8,20 +8,13 @@
     * [] is the scanset character, `^\n` stands for taking input as long as a newline isn’t encountered, `%*c` reads the newline character, where `*` indicates that the newline character is discarded
     * Note that this scan will NOT work as expected without first scanning in a newline character with `scanf(“\n”);` because the newline will be “leftover” from the previous line if you are scanning in multiple things.
 
-There is no max() function in C, though you can write your own with:
-
-~~~c
-int max(int a, int b){
-    if(a > b) {
-        return a;
-    }
-    return b;
-}
-~~~
+## Printf
 
 You can specify the rounding of floats in printf with `.*` specifier. Here we round things to 1 decimal place:
 
-`printf("%.1f %.1f",c+d,c-d);`
+`printf("%.1f %.1f",c,d);`
+
+## Numerical Digits
 
 If we want to get a specific digit of a number, we can do so using modular arithmetic and integer division:
 
@@ -32,6 +25,8 @@ int getNthDigit(int num, int n){
 }
 ~~~
 
+## Char array into int
+
 `strol()` is the function used to convert a char array into a long int. The second parameter *end_ptr is used to dump characters that comes in the string that comes after the integer.
 
 ~~~c
@@ -39,6 +34,8 @@ char* n_endptr;
 char* n_str = readline();
 int n = strtol(n_str, &n_endptr, 10);
 ~~~
+
+## Print each word in char array
 
 For a challenge that had us print out print each word (e.g., separated by a space) on a line from a char array, I had the following solution:
 
@@ -57,10 +54,12 @@ For a challenge that had us print out print each word (e.g., separated by a spac
     printf("%s\n",curr); //Get last part
 ~~~
 
+## Text Frequency
+
 Another problem asked me to read a line of text and then print out the frequency of each digit in that string:
 
 ~~~c
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
+    /*Read input from STDIN. Print output to STDOUT */  
     char line[1000];
     fgets(line,sizeof(line),stdin);
 
@@ -79,6 +78,7 @@ Another problem asked me to read a line of text and then print out the frequency
         printf("%d ",freq[i]);
     }
 ~~~
+## fgets
 
 Here I used the `fgets()` function for a more secure read than `scanf`. I also used an int array to keep track of the frequency (compared to doing it in a hashmap dictionary if we were following the Pythonic way). 
 
